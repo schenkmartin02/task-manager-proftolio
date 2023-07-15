@@ -1,0 +1,73 @@
+<div class="container mt-5">
+    <div class="col-md-12 col-12 col-sm-12">
+        <div class="card">
+            <form action="/create-task" method="post">
+                <h4 class="card-header">Új feladat</h4>
+                <div class="mb-3 p-3">
+                    <label for="title" class="form-label">Cím</label>
+                    <input type="text" class="form-control" id="title" name="title" required>
+                </div>
+                <div class="mb-3 p-3">
+                    <label for="description" class="form-label">Leírás</label>
+                    <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+                </div>
+                <div class="p-3">
+                    <button type="submit" class="btn btn-success">Létrehozás</button>
+                </div>
+            </form>
+        </div>
+        <div class=" card mt-5
+            ">
+            <div class="card-header">
+                <h4>Feladatok</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <tbody>
+                        <tr>
+                            <th class="text-center">
+                                Id
+                            </th>
+                            <th>Feladatnév</th>
+                            <th>Leírás</th>
+                            <th>Állapot</th>
+                            <th>Létrehozás dátuma</th>
+                            <th>Frissités dátuma</th>
+                            <th>Műveletek</th>
+                        </tr>
+                        <?php foreach ($params['tasks'] as $task): ?>
+                            <tr>
+                                <td class="text-center align-middle">
+                                    <?= $task['id'] ?>
+                                </td>
+                                <td class="align-middle"><?= $task['title'] ?></td>
+                                <td><?= $task['description'] ?>
+                                </td>
+                                <td class="align-middle">
+                                    <?php if ($task['status'] === 1): ?>
+                                        <span class="badge text-bg-danger">Létrehozva</span>
+                                    <?php endif; ?>
+                                    <?php if ($task['status'] === 2): ?>
+                                        <span class="badge text-bg-warning">Folyamatban</span>
+                                    <?php endif; ?>
+                                    <?php if ($task['status'] === 3): ?>
+                                        <span class="badge text-bg-success">Kész</span>
+                                    <?php endif; ?>
+                                </td>
+                                <td><?= date('Y-m-d H:i:s', $task['created_at']); ?></td>
+                                <td><?= date('Y-m-d H:i:s', $task['updated_at']); ?></td>
+                                <td class="align-middle">
+                                    <a class="btn btn-primary btn-action mr-1"><i class="bi bi-pencil-fill"></i></a>
+                                    <a href="delete-task/<?= $task['id'] ?>" class="btn btn-danger btn-action"><i
+                                            class="bi bi-trash-fill"></i></a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
