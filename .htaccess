@@ -2,10 +2,10 @@
   RewriteEngine On
 
   # Környezeti változók beállítása
-  SetEnv DB_HOST srv858.hstgr.io
-  SetEnv DB_NAME u802535957_taskmanager
-  SetEnv DB_USER u802535957_taskmanager
-  SetEnv DB_PASSWORD Martin200210
+  SetEnv DB_HOST host
+  SetEnv DB_NAME name
+  SetEnv DB_USER user
+  SetEnv DB_PASSWORD password
 
   # Ha a public mappában lévő fájlra érkezett a kérés, szolgáld ki a fájlt
   RewriteCond %{REQUEST_URI} ^.*public/(.*)
