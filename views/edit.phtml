@@ -1,0 +1,24 @@
+<div class="container mt-5">
+  <div class="col-md-12 col-12 col-sm-12">
+    <div class="card">
+      <form action="/edit-task-method?id=<?= $params['task']['id'] ?>" method="post">
+        <h4 class="card-header">Feladat szerkesztés</h4>
+        <div class="mb-3 p-3">
+          <label for="title" class="form-label">Cím</label>
+          <input type="text" class="form-control" id="title" name="title" required value="<?= $params['task']['title'] ?>">
+        </div>
+        <div class="mb-3 p-3">
+          <label for="description" class="form-label">Leírás</label>
+          <textarea class="form-control" id="description" name="description" rows="3" required><?= $params['task']['description'] ?></textarea>
+        </div>
+        <div class="mb-3 p-3">
+          <input type="checkbox" class="btn-check" id="btn-check-2-outlined" name="done" autocomplete="off">
+          <label class="btn btn-outline-primary" for="btn-check-2-outlined">Kész</label><br>
+        </div>
+        <div class="p-3">
+          <button type="submit" class="btn btn-success">Szerkesztés</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
